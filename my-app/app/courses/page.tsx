@@ -102,7 +102,6 @@ export default function CoursesPage() {
             <div className="space-y-3">
               <h4 className="text-lg font-semibold text-white">Contact Us</h4>
               <p className="text-sm text-white/70">Email: info@promptxacademy.com</p>
-              <p className="text-sm text-white/70">Phone: +1 (555) 123-4567</p>
             </div>
             <div className="space-y-3">
               <h4 className="text-lg font-semibold text-white">Follow Us</h4>

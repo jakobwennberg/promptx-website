@@ -1,20 +1,28 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { useRouter, usePathname } from 'next/navigation'
 
 export function UserTypePrompt() {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState(false)  // Start with false
   const router = useRouter()
   const pathname = usePathname()
 
+  useEffect(() => {
+    // Check if user has already made a choice
+    const userType = localStorage.getItem('promptx-user-type')
+    if (!userType) {
+      setIsOpen(true)
+    }
+  }, [])
+
   const handleChoice = (type: 'individual' | 'company') => {
+    localStorage.setItem('promptx-user-type', type)
     setIsOpen(false)
     if (type === 'individual') {
       router.push('/individual')
     }
-    // For company, we'll stay on the current page
   }
 
   if (!isOpen || pathname === '/contact') return null
