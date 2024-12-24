@@ -1,14 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import Link from "next/link"
-import Image from "next/image"
-import { useRouter } from 'next/navigation'
+import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { AlertCircle, Loader2 } from 'lucide-react'
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { cn } from "@/lib/utils"
+import { useRouter } from 'next/navigation'
 
 type FormErrors = {
   email?: string;
@@ -81,43 +80,8 @@ export default function IndividualNewsletterPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-500 to-purple-800">
-      <header className="sticky top-0 z-50 w-full backdrop-blur-sm bg-purple-800/70">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link className="flex items-center justify-center" href="/individual">
-            <div className="flex items-center gap-3">
-              <div className="relative h-8 w-8">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ska%CC%88rmavbild%202024-10-01%20kl.%2016.16.01-UAHiAcUQI1BWafa1VhOgOjB1f50onv.png"
-                  alt="PromptX Academy"
-                  fill
-                  priority
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-xl font-semibold text-white">PromptX Academy</span>
-            </div>
-          </Link>
-          <nav className="flex items-center space-x-6">
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/individual/courses">
-              Courses
-            </Link>
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/individual/resources">
-              Resources
-            </Link>
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/individual/newsletter">
-              Newsletter
-            </Link>
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/individual/blog">
-              Blog
-            </Link>
-            <Link href="/individual/courses">
-              <Button className="bg-white text-purple-800 hover:bg-purple-100" variant="secondary">
-                Get Started
-              </Button>
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Header variant="individual" />
+      
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
@@ -194,9 +158,6 @@ export default function IndividualNewsletterPage() {
           </div>
         </div>
       </main>
-      <footer className="w-full py-12 bg-purple-900">
-        {/* Footer content remains the same */}
-      </footer>
     </div>
   )
 }

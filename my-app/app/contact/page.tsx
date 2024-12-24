@@ -1,9 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Link from "next/link"
-import Image from "next/image"
-import { useRouter } from 'next/navigation'
+import { Header } from "@/components/header"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -18,21 +16,14 @@ type FormErrors = {
   general?: string;
 }
 
-type FormData = {
-  name: string;
-  email: string;
-  message: string;
-}
-
 export default function ContactPage() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const router = useRouter()
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -96,7 +87,8 @@ export default function ContactPage() {
         throw new Error(data.error || 'Failed to send message')
       }
 
-      router.push('/contact/thank-you')
+      // Redirect to thank you page or show success message
+      window.location.href = '/contact/thank-you'
     } catch (error) {
       setErrors({
         general: error instanceof Error ? error.message : 'An error occurred'
@@ -108,40 +100,8 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a192f] via-[#112a45] to-[#1a365d]">
-      <header className="sticky top-0 z-50 w-full backdrop-blur-sm bg-[#0a192f]/70">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link className="flex items-center justify-center" href="/">
-            <div className="flex items-center gap-3">
-              <div className="relative h-8 w-8">
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ska%CC%88rmavbild%202024-10-01%20kl.%2016.16.01-UAHiAcUQI1BWafa1VhOgOjB1f50onv.png"
-                  alt="PromptX Academy"
-                  fill
-                  priority
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-xl font-semibold text-white">PromptX Academy</span>
-            </div>
-          </Link>
-          <nav className="flex items-center space-x-6">
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/courses">
-              Courses
-            </Link>
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/newsletter">
-              Newsletter
-            </Link>
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/about">
-              About
-            </Link>
-            <Link href="/contact">
-              <Button className="bg-white text-blue-950 hover:bg-blue-50" variant="secondary">
-                Contact Us
-              </Button>
-            </Link>
-          </nav>
-        </div>
-      </header>
+      <Header variant="business" />
+      
       <main className="container mx-auto px-4 py-12">
         <div className="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
           <div className="p-6">
@@ -246,9 +206,6 @@ export default function ContactPage() {
           </div>
         </div>
       </main>
-      <footer className="w-full py-12 bg-[#000435]">
-        {/* Footer content remains the same */}
-      </footer>
     </div>
   )
 }

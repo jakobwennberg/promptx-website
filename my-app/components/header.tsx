@@ -1,3 +1,4 @@
+// components/header.tsx
 'use client'
 
 import Link from "next/link"
@@ -7,14 +8,46 @@ import { Menu } from 'lucide-react'
 import { useMobileMenu } from "@/lib/useMobileMenu"
 import { MobileNav } from "@/components/mobile-nav"
 
-export function Header() {
+interface HeaderProps {
+  variant?: 'business' | 'individual'
+}
+
+export function Header({ variant = 'business' }: HeaderProps) {
   const { isOpen, toggle } = useMobileMenu()
+  
+  const bgColor = variant === 'business' 
+    ? 'bg-[#0a192f]' 
+    : 'bg-purple-800'
+    
+  const buttonColor = variant === 'business'
+    ? 'bg-white text-blue-950 hover:bg-blue-50'
+    : 'bg-white text-purple-800 hover:bg-purple-100'
+
+  const getLinks = () => {
+    if (variant === 'business') {
+      return [
+        { href: '/courses', label: 'Courses' },
+        { href: '/newsletter', label: 'Newsletter' },
+        { href: '/about', label: 'About' },
+        { href: '/contact', label: 'Contact Us', isButton: true }
+      ]
+    }
+    return [
+      { href: '/individual/courses', label: 'Courses' },
+      { href: '/individual/resources', label: 'Resources' },
+      { href: '/individual/newsletter', label: 'Newsletter' },
+      { href: '/individual/blog', label: 'Blog' },
+      { href: '/individual/courses', label: 'Get Started', isButton: true }
+    ]
+  }
+
+  const links = getLinks()
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-[#0a192f]">
+      <header className={`sticky top-0 z-50 w-full ${bgColor}`}>
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <Link className="flex items-center justify-center" href="/">
+          <Link className="flex items-center justify-center" href={variant === 'business' ? '/' : '/individual'}>
             <div className="flex items-center gap-3">
               <div className="relative h-8 w-8">
                 <Image
@@ -40,26 +73,29 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6">
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/courses">
-              Courses
-            </Link>
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/newsletter">
-              Newsletter
-            </Link>
-            <Link className="text-sm font-medium text-white hover:underline underline-offset-4" href="/about">
-              About
-            </Link>
-            <Link href="/contact">
-              <Button className="bg-white text-blue-950 hover:bg-blue-50" variant="secondary">
-                Contact Us
-              </Button>
-            </Link>
+            {links.map((link, index) => 
+              link.isButton ? (
+                <Link key={index} href={link.href}>
+                  <Button className={buttonColor} variant="secondary">
+                    {link.label}
+                  </Button>
+                </Link>
+              ) : (
+                <Link
+                  key={index}
+                  className="text-sm font-medium text-white hover:underline underline-offset-4"
+                  href={link.href}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
         </div>
       </header>
 
       {/* Mobile Navigation */}
-      <MobileNav isOpen={isOpen} />
+      <MobileNav isOpen={isOpen} links={links} variant={variant} />
     </>
   )
 }
