@@ -1,0 +1,89 @@
+.
+├── my-app
+│   ├── README.md
+│   ├── app
+│   │   ├── about
+│   │   │   └── page.tsx
+│   │   ├── api
+│   │   │   ├── contact
+│   │   │   │   └── route.ts
+│   │   │   ├── enrollment
+│   │   │   │   └── route.ts
+│   │   │   └── newsletter
+│   │   │       └── route.ts
+│   │   ├── contact
+│   │   │   ├── page.tsx
+│   │   │   └── thank-you
+│   │   │       └── page.tsx
+│   │   ├── courses
+│   │   │   ├── coming-soon
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── favicon.ico
+│   │   ├── fonts
+│   │   │   ├── GeistMonoVF.woff
+│   │   │   └── GeistVF.woff
+│   │   ├── globals.css
+│   │   ├── individual
+│   │   │   ├── blog
+│   │   │   │   └── page.tsx
+│   │   │   ├── courses
+│   │   │   │   ├── coming-soon
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── rag-implementation
+│   │   │   │       └── page.tsx
+│   │   │   ├── newsletter
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── thank-you
+│   │   │   │       └── page.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── resources
+│   │   │       └── page.tsx
+│   │   ├── layout.tsx
+│   │   ├── newsletter
+│   │   │   ├── page.tsx
+│   │   │   └── thank-you
+│   │   │       └── page.tsx
+│   │   └── page.tsx
+│   ├── components
+│   │   ├── AnimatedLogos.tsx
+│   │   ├── AnimatedText.tsx
+│   │   ├── EnrollmentModal.tsx
+│   │   ├── UserTypePrompt.tsx
+│   │   ├── button.tsx
+│   │   ├── header.tsx
+│   │   ├── mobile-nav.tsx
+│   │   └── ui
+│   │       ├── alert.tsx
+│   │       ├── button.tsx
+│   │       ├── enrollment-modal.tsx
+│   │       ├── input.tsx
+│   │       └── textarea.tsx
+│   ├── components.json
+│   ├── lib
+│   │   ├── supabase.ts
+│   │   ├── useMobileMenu.ts
+│   │   └── utils.ts
+│   ├── next-env.d.ts
+│   ├── next.config.mjs
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── page.tsx
+│   ├── postcss.config.mjs
+│   ├── public
+│   │   └── logos
+│   │       ├── github.svg
+│   │       ├── huggingface.svg
+│   │       ├── midjourney.svg
+│   │       └── openai.svg
+│   ├── src
+│   │   └── types
+│   │       └── forms.ts
+│   ├── tailwind.config.js
+│   ├── tailwind.config.ts
+│   ├── tree.txt
+│   └── tsconfig.json
+└── tree.txt
+
+30 directories, 57 files
