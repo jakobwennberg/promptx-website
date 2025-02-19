@@ -1,3 +1,4 @@
+/*
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -56,4 +57,28 @@ export function UserTypePrompt() {
       </div>
     </div>
   )
+}
+*/
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+
+export function UserTypePrompt() {
+  const router = useRouter()
+
+  useEffect(() => {
+    // Get the current path
+    const path = window.location.pathname
+    
+    // Only redirect if we're on the root path
+    if (path === '/') {
+      // For now, always route to the business version
+      // We can easily change this back to show the prompt later
+      router.push('/')
+    }
+  }, [router])
+
+  // Return null as we don't need to render anything for now
+  return null
 }
