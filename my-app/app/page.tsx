@@ -101,6 +101,7 @@ export default function Home() {
               </div>
               <div className="flex flex-col justify-center space-y-4">
                 <p className="text-lg text-white/80">
+                See how we've helped businesses unlock AI-driven efficiency and success
                 </p>
               </div>
             </div>
