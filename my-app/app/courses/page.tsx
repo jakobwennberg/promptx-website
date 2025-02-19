@@ -33,19 +33,20 @@ export default function CoursesPage() {
         <h1 className="text-4xl font-bold text-white mb-8">Our Courses for Businesses</h1>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {courses.map((course) => (
-            <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <div className="p-6">
+            <div key={course.id} className="bg-white rounded-lg shadow-md overflow-hidden h-[300px] relative">
+              <div className="p-6 flex flex-col h-full">
                 <h2 className="text-2xl font-bold text-blue-950 mb-2">{course.title}</h2>
                 <p className="text-gray-600 mb-4">{course.description}</p>
-                <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+                <div className="text-sm text-gray-500">
                   <span>{course.level}</span>
                 </div>
-                <Link 
-                  href="/courses/coming-soon"
-                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
-                >
-                  Learn More <ArrowRight className="h-4 w-4" />
-                </Link>
+                <div className="absolute bottom-6 right-6">
+                  <Link href="/courses/coming-soon">
+                    <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50">
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}
@@ -54,4 +55,3 @@ export default function CoursesPage() {
     </div>
   )
 }
-
