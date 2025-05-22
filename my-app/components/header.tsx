@@ -52,13 +52,13 @@ export function Header({ variant = 'business' }: HeaderProps) {
               <div className="relative h-8 w-8">
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Ska%CC%88rmavbild%202024-10-01%20kl.%2016.16.01-UAHiAcUQI1BWafa1VhOgOjB1f50onv.png"
-                  alt="PromptX Academy"
+                  alt="PromptX"
                   fill
                   priority
                   className="object-contain"
                 />
               </div>
-              <span className="text-xl font-semibold text-white">PromptX Academy</span>
+              <span className="text-xl font-semibold text-white">PromptX</span>
             </div>
           </Link>
           
