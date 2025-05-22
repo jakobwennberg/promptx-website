@@ -7,8 +7,29 @@ import { AnimatedLogos } from "@/components/AnimatedLogos"
 import { AnimatedText } from "@/components/AnimatedText"
 import { ArrowRight, Facebook, Twitter, LinkedinIcon as LinkedIn, Instagram } from 'lucide-react'
 import { UserTypePrompt } from "@/components/UserTypePrompt"
+import { useEffect } from 'react'
 
 export default function Home() {
+  useEffect(() => {
+    // Load Tally embed script
+    const script = document.createElement('script')
+    script.src = 'https://tally.so/widgets/embed.js'
+    script.onload = () => {
+      if (typeof window !== 'undefined' && (window as any).Tally) {
+        ;(window as any).Tally.loadEmbeds()
+      }
+    }
+    document.body.appendChild(script)
+
+    return () => {
+      // Cleanup script when component unmounts
+      const existingScript = document.querySelector('script[src="https://tally.so/widgets/embed.js"]')
+      if (existingScript) {
+        document.body.removeChild(existingScript)
+      }
+    }
+  }, [])
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0a192f] via-[#112a45] to-[#1a365d]">
       <Header />
@@ -32,7 +53,7 @@ export default function Home() {
           </div>
         </section>
         
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full pt-12 pb-12 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
               <div>
@@ -49,49 +70,28 @@ export default function Home() {
                 </p>
               </div>
             </div>
-          </div>
-        </section>
-
-        <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
-          <div className="container mx-auto px-4 md:px-6">
-            <h2 className="text-3xl font-bold text-blue-950 sm:text-4xl md:text-5xl mb-12">What We Offer</h2>
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-semibold text-blue-950 text-xl mb-3">AI Training & Keynote Sessions</h4>
-                <p className="text-gray-600">
-                  <span className="font-medium block mb-2">Master AI and Prompt Engineering with Experts</span>
-                  We offer practical and inspiring AI training tailored for businesses and organizations. Our keynotes and workshops provide the knowledge and tools needed to effectively integrate AI into your daily work.
-                </p>
-              </div>
-
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-semibold text-blue-950 text-xl mb-3">AI Strategy & Implementation</h4>
-                <p className="text-gray-600">
-                  <span className="font-medium block mb-2">Turn AI into a Competitive Advantage</span>
-                  We help businesses identify and implement AI solutions that save time, boost productivity, and drive innovation. From strategic planning to hands-on AI integration, we ensure AI works for your business.
-                </p>
-              </div>
-
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-semibold text-blue-950 text-xl mb-3">Hands-on Workshops & Coaching</h4>
-                <p className="text-gray-600">
-                  <span className="font-medium block mb-2">Learn How to Use AI in Practice</span>
-                  Our interactive workshops equip you and your team with the skills to maximize AI's potential. Whether you're a beginner or already using AI, we customize our sessions to deliver immediate business value.
-                </p>
-              </div>
-
-              <div className="bg-blue-50 p-6 rounded-lg">
-                <h4 className="font-semibold text-blue-950 text-xl mb-3">AI Networking & Community</h4>
-                <p className="text-gray-600">
-                  <span className="font-medium block mb-2">Be Part of the AI Future</span>
-                  Join our network to connect with industry leaders and AI professionals. Gain exclusive insights, access real-world case studies, and stay ahead in the fast-moving world of AI.
-                </p>
+            
+            {/* Tally Form Integration */}
+            <div className="mt-16 w-screen relative left-1/2 -translate-x-1/2">
+              <div className="bg-white py-8 px-4 md:px-6">
+                <div className="container mx-auto">
+                  <iframe 
+                    data-tally-src="https://tally.so/embed/3EYrjA?alignLeft=1&transparentBackground=1&dynamicHeight=1" 
+                    loading="lazy" 
+                    width="100%" 
+                    height="279" 
+                    frameBorder="0" 
+                    marginHeight={0} 
+                    marginWidth={0} 
+                    title="Automation Discovery Form"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="w-full py-12 md:py-24 lg:py-32">
+        <section className="w-full pt-12 pb-12 md:pt-16 md:pb-24 lg:pt-20 lg:pb-32">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
               <div>
@@ -134,6 +134,45 @@ export default function Home() {
                   <p className="text-sm">• 65% cost reduction</p>
                   <p className="text-sm">• Customer satisfaction up by 45%</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="w-full py-12 md:py-24 lg:py-32 bg-white">
+          <div className="container mx-auto px-4 md:px-6">
+            <h2 className="text-3xl font-bold text-blue-950 sm:text-4xl md:text-5xl mb-12">What We Offer</h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-blue-950 text-xl mb-3">AI Training & Keynote Sessions</h4>
+                <p className="text-gray-600">
+                  <span className="font-medium block mb-2">Master AI and Prompt Engineering with Experts</span>
+                  We offer practical and inspiring AI training tailored for businesses and organizations. Our keynotes and workshops provide the knowledge and tools needed to effectively integrate AI into your daily work.
+                </p>
+              </div>
+
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-blue-950 text-xl mb-3">AI Strategy & Implementation</h4>
+                <p className="text-gray-600">
+                  <span className="font-medium block mb-2">Turn AI into a Competitive Advantage</span>
+                  We help businesses identify and implement AI solutions that save time, boost productivity, and drive innovation. From strategic planning to hands-on AI integration, we ensure AI works for your business.
+                </p>
+              </div>
+
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-blue-950 text-xl mb-3">Hands-on Workshops & Coaching</h4>
+                <p className="text-gray-600">
+                  <span className="font-medium block mb-2">Learn How to Use AI in Practice</span>
+                  Our interactive workshops equip you and your team with the skills to maximize AI's potential. Whether you're a beginner or already using AI, we customize our sessions to deliver immediate business value.
+                </p>
+              </div>
+
+              <div className="bg-blue-50 p-6 rounded-lg">
+                <h4 className="font-semibold text-blue-950 text-xl mb-3">AI Networking & Community</h4>
+                <p className="text-gray-600">
+                  <span className="font-medium block mb-2">Be Part of the AI Future</span>
+                  Join our network to connect with industry leaders and AI professionals. Gain exclusive insights, access real-world case studies, and stay ahead in the fast-moving world of AI.
+                </p>
               </div>
             </div>
           </div>
