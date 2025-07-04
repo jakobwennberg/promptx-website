@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 
-const phrases = ["Prompt Engineering", "AI Integration", "AI Solutions"]
+const phrases = ["AI Solutions", "AI Strategy", "Business Automation"]
 
 export function AnimatedText() {
   const [index, setIndex] = useState(0)
@@ -35,10 +35,9 @@ export function AnimatedText() {
   }, [displayText, index, isDeleting])
 
   return (
-    <span className="inline-block min-w-[300px]">
+    <span className="inline-block min-w-[300px] font-light">
       {displayText}
-      <span className="animate-blink">|</span>
+      <span className="animate-blink font-light">|</span>
     </span>
   )
 }
-

@@ -1,37 +1,22 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import { UserTypePrompt } from "@/components/UserTypePrompt"
 
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'PromptX Academy',
-  description: 'Experts in Prompt Engineering',
-  icons: [
-    {
-      rel: 'icon',
-      url: '/favicon.ico',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '32x32',
-      url: '/favicon-32x32.png',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '16x16',
-      url: '/favicon-16x16.png',
-    },
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      url: '/apple-touch-icon.png',
-    },
-  ],
+  title: 'BERG AI',
+  description: 'Experts in AI Solutions',
+  icons: {
+    // regular favicons (multiple sizes allowed)
+    icon: [
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      '/favicon.ico', // classic fallback
+    ],
+    // iOS / iPadOS home-screen icon
+    apple: '/apple-touch-icon.png',
+  },
 }
+
 
 export default function RootLayout({
   children,
@@ -40,8 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <UserTypePrompt />
+      <body className="font-light">
         {children}
       </body>
     </html>

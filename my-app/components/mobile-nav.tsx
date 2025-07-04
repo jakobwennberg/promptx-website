@@ -13,11 +13,9 @@ interface MobileNavProps {
   variant?: 'business' | 'individual'
 }
 
-export function MobileNav({ isOpen, links, variant = 'business' }: MobileNavProps) {
-  const bgColor = variant === 'business' ? 'bg-[#0a192f]' : 'bg-purple-800'
-  const buttonColor = variant === 'business'
-    ? 'bg-white text-blue-950 hover:bg-blue-50'
-    : 'bg-white text-purple-800 hover:bg-purple-100'
+export function MobileNav({ isOpen, links }: MobileNavProps) {
+  const bgColor = 'bg-black'
+  const buttonColor = 'bg-white text-black hover:bg-gray-200'
 
   return (
     <div 
@@ -31,7 +29,7 @@ export function MobileNav({ isOpen, links, variant = 'business' }: MobileNavProp
           link.isButton ? (
             <Link key={index} href={link.href}>
               <Button 
-                className={`w-full ${buttonColor} justify-center`}
+                className={`w-full ${buttonColor} justify-center font-light`}
                 variant="secondary"
               >
                 {link.label}
@@ -40,7 +38,7 @@ export function MobileNav({ isOpen, links, variant = 'business' }: MobileNavProp
           ) : (
             <Link 
               key={index}
-              className="text-base font-medium text-white hover:text-gray-200" 
+              className="text-base font-light text-white hover:text-gray-200" 
               href={link.href}
             >
               {link.label}
