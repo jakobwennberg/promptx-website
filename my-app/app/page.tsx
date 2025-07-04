@@ -51,7 +51,7 @@ export default function Home() {
                 Our mission is to help businesses harness the power of AI and stay ahead in the rapidly evolving digital landscape.
               </p>
               <p className="text-lg font-light text-white/80">
-                As AI continues to reshape industries, how will your business adapt and thrive? We combine technical expertise with strategic insight to guide you through your AI journey – wherever you are in the process.
+              AI is reshaping every industry. Whether you’re exploring first use-cases or optimising mature deployments, BERG AI pairs deep technical skill with sharp commercial insight to move your business forward, wherever you are on the journey.
               </p>
             </div>
           </div>
